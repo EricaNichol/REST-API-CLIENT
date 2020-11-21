@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  script.
+    console.log(!{JSON.stringify(users)})
+    console.log(!{JSON.stringify(uniqueId)})
+
+  div
+    h1 David Lin Full Stack application
+    a https://www.linkedin.com/in/davidlin98/
+    <br>
+    a(href:"mailto:david@codingbydave.com") david@codingbydave.com
+    <br>
+    a(tel:"+16048288683") 604 828 8683
+
+  div
+    h3 Notes
+    ul
+      li Spent around 4 hours
+      li Does not include a DB
+      li Took assignment tasks at face value
+
+    h3 Features
+
+    ul
+      li BE API repo
+      li Frontend app that consumes the BE repo
+      li on home page, unique ID is retrieved from BE
+      li on home page, all users are retrieved from BE
+      li Has Jest testing but ran in to Babel issues.
+
+  div
+    p There's no DB, so the users below are from a MockSeed file.
+      <br>All user data are retrieve via http://localhost:5000/user endpoint.
+    p You can test this in terminal with <b>`curl https://localhost:5000/users`</b>, and
+      <br>logging will show in your terminal
+
+    ul
+    each user in users
+        li id: #{user.id}; username: #{user.username}
+  div
+    H3 A unique Id below everytime a page refreshes.
+    p #{uniqueId}
+
+  div
+    H3 Available Endpoints
+    ul
+      li curl http://localhost:5000/users, (gets all users)
+      li curl http://localhost:5000/id , (gets unique id)
+      li curl http://localhost:5000/users/id, (gets user description. id 1, 2 or 3)
